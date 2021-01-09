@@ -12,8 +12,10 @@ class App extends Component {
     return(
       <div className="App">
         <Layout>
-            <Route path="/" component={SearchPage}/>
-          {/* <h1>up and running</h1> */}
+            <Switch>
+              {/* <Route path="/lists" component={Nomination}/> */}
+              <Route path="/" component={SearchPage}/>
+            </Switch>
         </Layout>
       </div>
     )

@@ -1,28 +1,43 @@
 import React, {Component} from 'react'; 
+import axios from 'axios';
+import {connect} from 'react-redux';
 
-import Aux from '../../hoc/Aux/Aux';
-import Input from '../../components/Search/Input';
+import Input from '../../components/Search/Input/Input';
+import Results from '../../components/Search/Results/Results';
+import Nominations from '../../components/Nominations/Nominations';
+import * as actions from '../../store/actions/index';
+
+import classes from './SearchPage.module.css';
 
 class SearchPage extends Component {
-    state={
-        searchQuery: 'heyhey'
-    }
-
-    searchingHandler = (event) => {
-        this.setState({searchQuery: event.target.value})
-    }
-    
     render(){
         return(
-            <Aux>
-                <h1>{this.state.searchQuery}</h1>
+            <div>
+                <h1>Search Page Babeyyy</h1>
                 <Input 
-                    value={this.state.searchQuery} 
-                    changed={event => this.searchingHandler(event) } 
+                    value={this.props.searchQuery} 
+                    changed={event => this.props.onSearch(event) } 
                 />
-            </Aux>
+                <div className={classes.MainView}>
+                    <Results results={this.props.results}/>
+                    <Nominations/>
+                </div>
+            </div>
         ); 
     }
 }
 
-export default SearchPage; 
+const matchStateWithProps = state => {
+    return{
+        searchQuery: state.search.searchQuery,
+        results: state.search.results
+    }
+}
+
+const matchDispatchWithProps = dispatch => {
+    return{
+        onSearch: (event) => dispatch(actions.searchMovies(event))
+    }
+}
+
+export default connect(matchStateWithProps, matchDispatchWithProps)(SearchPage); 
