@@ -6,7 +6,7 @@ const Input = (props) => {
         <div>
             <TextField 
                 variant="filled" 
-                color="secondary"
+                color="primary"
                 label="Search for a movie!"
                 size = "medium"
                 onChange={props.changed}

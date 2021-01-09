@@ -14,3 +14,9 @@ export const deleteNomination = (nomination) => {
         nomination: nomination
     }
 }
+
+export const hideBanner = () => {
+    return{
+        type: actionTypes.HIDE_BANNER
+    }
+}

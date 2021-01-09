@@ -28,7 +28,9 @@ export const searchMovies = (event) => {
             .then(response => {
                 let results = []; 
                 if(response.data.Search){
-                    results = response.data.Search.slice(0, 4)
+                    results = response.data.Search.filter(item => (
+                        item.Type === "movie"
+                    )).slice(0, 5)
                 }
                 dispatch(fetchResults(results))
             })

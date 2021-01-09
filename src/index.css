@@ -1,8 +1,11 @@
 body {
 	margin: 0;
-	font-family: "Open Sans", sans-serif;
+	font-family: "Quicksand", sans-serif;
+	font-weight: normal !important;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-color: lightgray;
+	color: #534f57;
 }
 
 code {

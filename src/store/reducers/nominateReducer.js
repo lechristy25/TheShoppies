@@ -2,7 +2,8 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     nominations: [], 
-    limitReached: false
+    limitReached: false, 
+    showBanner: false
 }
 
 const nominateMovie = (state, action) => {
@@ -10,7 +11,8 @@ const nominateMovie = (state, action) => {
     let updatedLimitStatus = (updatedNominations.length === 5)
     return {
         nominations: updatedNominations, 
-        limitReached: updatedLimitStatus
+        limitReached: updatedLimitStatus, 
+        showBanner: updatedLimitStatus
     }
 }
 
@@ -20,7 +22,8 @@ const deleteNomination = (state, action) => {
     })
     return {
         nominations: updatedNominations, 
-        limitReached: false
+        limitReached: false, 
+        showBanner: false
     }
 }
 
@@ -35,6 +38,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state, 
                 ...deleteNomination(state, action)
+            }
+        case actionTypes.HIDE_BANNER:
+            return {
+                ...state, 
+                showBanner: false
             }
         default:
             return state;

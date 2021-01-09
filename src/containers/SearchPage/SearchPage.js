@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import Input from '../../components/Search/Input/Input';
 import Results from '../../components/Search/Results/Results';
 import Nominations from '../../components/Nominations/Nominations';
+import Banner from '../../components/UI/Banner';
 import * as actions from '../../store/actions/index';
 
 import classes from './SearchPage.module.css';
@@ -22,6 +23,7 @@ class SearchPage extends Component {
                     <Results results={this.props.results}/>
                     <Nominations/>
                 </div>
+                <Banner/>
             </div>
         ); 
     }
