@@ -41,6 +41,7 @@ const Input = (props) => {
                         ), 
                         className: classes.input
                         }}
+                    placeholder="Search For Movies"
                     style={{width: '100%'}}
                     color="secondary"
                     type="search"

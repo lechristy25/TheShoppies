@@ -18,7 +18,7 @@ class SearchPage extends Component {
 
     state={
         nominationIsOpen: false,
-        searchWidth: "10%"
+        searchWidth: "20%"
     }
 
     showNoms = () => {
@@ -35,14 +35,14 @@ class SearchPage extends Component {
         return(
             <Aux>
                 <Grid item style={{width: '100%'}}>
-                    <Header>Shoppies
+                    <Header><h2>Shoppies</h2>
                         <Input width={this.state.searchWidth}
                             value={this.props.searchQuery} 
                             changed={event => this.props.onSearch(event) }
                             onfocus={() => this.setState({searchWidth: "40%"})} 
-                            onblur={() => this.setState({searchWidth: "10%"})} 
+                            onblur={() => this.setState({searchWidth: "20%"})} 
                         />
-                        <NomButton onClick={this.showNoms}>Show/Hide Nominations</NomButton>
+                        <NomButton onClick={this.showNoms}>{this.state.nominationIsOpen ? "Hide" : "Show"} Nominations</NomButton>
                     </Header>
 
                 </Grid>

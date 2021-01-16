@@ -30,6 +30,7 @@ const Nominations = (props) => {
                     from={{ opacity: 0}}
                     enter={{opacity: 1}}
                     leave={{opacity: 0}}>
+                    {/* // update={{transition: "all 0.2s ease-out"}}> */}
                     {item => props => 
                         <animated.div style={props}>
                             <Nomination key={item.id} movie={item}/>

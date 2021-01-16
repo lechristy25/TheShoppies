@@ -10,3 +10,7 @@
 .MainView::-webkit-scrollbar {
 	display: none;
 }
+
+h2:hover {
+	color: #80ffd4;
+}
