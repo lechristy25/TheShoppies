@@ -1,30 +1,70 @@
 import React, {Component} from 'react'; 
-import axios from 'axios';
 import {connect} from 'react-redux';
+import {Grid} from '@material-ui/core';
+import { Transition, animated } from 'react-spring/renderprops'
 
 import Input from '../../components/Search/Input/Input';
 import Results from '../../components/Search/Results/Results';
 import Nominations from '../../components/Nominations/Nominations';
 import Banner from '../../components/UI/Banner';
 import * as actions from '../../store/actions/index';
+import Aux from '../../hoc/Aux/Aux'
+import {NomButton} from '../../components/UI/ColorButton';
+import Header from '../../components/UI/Header'
 
 import classes from './SearchPage.module.css';
 
 class SearchPage extends Component {
+
+    state={
+        nominationIsOpen: false,
+        searchWidth: "10%"
+    }
+
+    showNoms = () => {
+        this.setState(prevState => ({nominationIsOpen: !prevState.nominationIsOpen}))
+    }
+
     render(){
+
+        const mainBody = 
+            (<Aux>
+            <Results nominationIsOpen={this.state.nominationIsOpen}results={this.props.results}/>
+            <Nominations show={this.state.nominationIsOpen}/>
+            </Aux>);
         return(
-            <div>
-                <h1>Search Page Babeyyy</h1>
-                <Input 
-                    value={this.props.searchQuery} 
-                    changed={event => this.props.onSearch(event) } 
-                />
-                <div className={classes.MainView}>
-                    <Results results={this.props.results}/>
-                    <Nominations/>
-                </div>
+            <Aux>
+                <Grid item style={{width: '100%'}}>
+                    <Header>Shoppies
+                        <Input width={this.state.searchWidth}
+                            value={this.props.searchQuery} 
+                            changed={event => this.props.onSearch(event) }
+                            onfocus={() => this.setState({searchWidth: "40%"})} 
+                            onblur={() => this.setState({searchWidth: "10%"})} 
+                        />
+                        <NomButton onClick={this.showNoms}>Show/Hide Nominations</NomButton>
+                    </Header>
+
+                </Grid>
+                        
+
+                    <Transition
+                        native
+                        items={mainBody}
+                        initial={{transform: 'translate3d(0, 100%, 0)', opacity: 0}}
+                        enter={{transform: 'translate3d(0, 0%, 0)', opacity: 1, display: 'flex'}}
+                        // update={this.state.nominationIsOpen ? { display: 'flex'} : { display: 'flex'}}
+                        >
+                        {items => props =>
+                            <animated.div style={props} className={classes.MainView}>
+                                {items}
+                            </animated.div>
+                        }
+                    </Transition>
+                    
+                        
                 <Banner/>
-            </div>
+            </Aux>
         ); 
     }
 }

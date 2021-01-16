@@ -1,10 +1,49 @@
 .Nominations {
-	margin: 20px auto;
-	width: 40%;
-	height: 700px;
-	text-align: center;
-	box-shadow: 0 2px 3px #ccc;
-	border: 1px solid #eee;
-	padding: 10px;
+	margin: 20px;
+	min-height: 930px;
+	flex-basis: 45%;
+	/* display: flex;
+	align-items: center;
+	justify-content: center;*/
 	box-sizing: border-box;
+	text-align: center;
+	box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.3);
+	color: black;
+	font-weight: bold;
+	padding: 50px 10px;
+	background-color: #59bb9b;
+	border-radius: 10px;
+	transition: all 0.3s ease-out;
+}
+
+.NominationsOpen {
+	animation: openNoms 0.4s ease-out forwards;
+}
+
+.NominationsClosed {
+	animation: closeNoms 0.4s ease-out forwards;
+}
+
+@keyframes openNoms {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0.8;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes closeNoms {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.8;
+	}
+	100% {
+		opacity: 0;
+	}
 }

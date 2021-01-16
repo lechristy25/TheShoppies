@@ -1,5 +1,12 @@
 .MainView {
-	display: flex;
-	justify-content: space-evenly;
+	flex-wrap: wrap;
 	align-items: center;
+	width: 80%;
+	overflow: hidden;
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none;
+}
+
+.MainView::-webkit-scrollbar {
+	display: none;
 }

@@ -1,8 +1,12 @@
 .Nomination {
 	width: 80%;
-	border: 1px solid #ccc;
-	box-shadow: 0 2px 3px #ccc;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 	padding: 10px;
 	margin: 10px auto;
 	box-sizing: border-box;
+	background-color: #f9eae7;
+	color: black;
+	font-weight: lighter !important;
+	font-size: 1.1rem;
+	border-radius: 6px;
 }
