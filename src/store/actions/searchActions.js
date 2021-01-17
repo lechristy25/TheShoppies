@@ -24,16 +24,51 @@ export const searchMovies = (event) => {
     return dispatch => {
         const formattedQuery = event.target.value.split(" ").join("-"); 
         dispatch (setQuery(formattedQuery))
+        let initialSearch = []; 
+        let results = [];
         axios.get('http://www.omdbapi.com/?apikey=95cdb87b&s=' + formattedQuery)
             .then(response => {
-                let results = []; 
+                // console.log(response)
                 if(response.data.Search){
-                    results = response.data.Search.filter(item => (
+                    initialSearch = response.data.Search.filter(item => (
                         item.Type === "movie"
                     )).slice(0, 5)
+                    
                 }
-                dispatch(fetchResults(results))
+                const array = axios.all(initialSearch.map(movie => axios.get('http://www.omdbapi.com/?apikey=95cdb87b&i=' + movie.imdbID + '&plot=short')))
+                array.then(response => {
+                    if(response.length > 0){
+                        response.forEach(movie => results.push(movie.data))
+                    }
+                    dispatch(fetchResults(results))
+                })
+                // console.log(initialSearch)
             })
             .catch(_ => fetchResultsFail())
+        
+
+        
+        // const detailedResults = Promise.all(initialSearch.map((movie) => {
+        //             return axios.get('http://www.omdbapi.com/?apikey=95cdb87b&i=' + movie.imdbID + '&plot=short')
+        // }))
+
+        // console.log(detailedResults)
+        // // .then(movies => console.log(movies) )
+        
+        // initialSearch
+            //     console.log(initialSearch)
+            //     initialSearch.forEach((movie, index) => {
+            //         return axios.get('http://www.omdbapi.com/?apikey=95cdb87b&i=' + movie.imdbID + '&plot=short')
+            //     })
+                
+            // })
+            // .then(response =>  {
+            //     results.push(response.data)
+            //     console.log(results)
+            // })
+            // .then(dispatch(fetchResults(results)))
+            
+        
     }
 }
+

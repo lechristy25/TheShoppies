@@ -1,6 +1,8 @@
 import React from 'react'; 
 import { Transition, animated } from 'react-spring/renderprops';
 import withWindowDimensions from '../../../hoc/Window/withWindowDimensions';
+import Divider from '@material-ui/core/Divider';
+
 
 
 
@@ -17,13 +19,15 @@ const Results = (props) => {
     
     if(props.results.length > 0){
         resultOutput = props.results.map(item =>
-            <Result title={item.Title} year={item.Year} id={item.imdbID} key={item.imdbID}/> )
+            <Result title={item.Title} year={item.Year} plot={item.Plot} id={item.imdbID} key={item.imdbID}/> )
     }
 
     return(
          <Transition
                         native
                         items={<div style={{flexGrow: 1}}>
+                                <h2 >Search Results</h2>
+                                <Divider variant="middle" style={{backgroundColor: '#80ffd4', marginBottom:'30px'}}/>
                                 {resultOutput}
                                 </div>}
                         initial={{transform: 'translate3d(0, 100%, 0)', opacity: 0}}

@@ -6,7 +6,8 @@ import { Transition, animated } from 'react-spring/renderprops'
 import Input from '../../components/Search/Input/Input';
 import Results from '../../components/Search/Results/Results';
 import Nominations from '../../components/Nominations/Nominations';
-import Banner from '../../components/UI/Banner';
+import SuccessBanner from '../../components/UI/SuccessBanner';
+import LimitBanner from '../../components/UI/LimitBanner';
 import * as actions from '../../store/actions/index';
 import Aux from '../../hoc/Aux/Aux'
 import {NomButton} from '../../components/UI/ColorButton';
@@ -63,7 +64,8 @@ class SearchPage extends Component {
                     </Transition>
                     
                         
-                <Banner/>
+                <SuccessBanner/>
+                <LimitBanner/>
             </Aux>
         ); 
     }

@@ -15,8 +15,14 @@ export const deleteNomination = (nomination) => {
     }
 }
 
-export const hideBanner = () => {
+export const hideSuccessBanner = () => {
     return{
-        type: actionTypes.HIDE_BANNER
+        type: actionTypes.HIDE_SUCCESS_BANNER
+    }
+}
+
+export const hideLimitBanner = () => {
+    return{
+        type: actionTypes.HIDE_LIMIT_BANNER
     }
 }

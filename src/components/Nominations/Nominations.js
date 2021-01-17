@@ -1,6 +1,7 @@
 import React from 'react'; 
 import {connect} from 'react-redux';
 import { Transition, animated } from 'react-spring/renderprops'
+import Divider from '@material-ui/core/Divider/Divider'
 
 import Nomination from './Nomination/Nomination';
 import withWindowDimensions from '../../hoc/Window/withWindowDimensions';
@@ -15,7 +16,7 @@ const animationTiming = {
 
 
 const Nominations = (props) => {
-        let currNoms = <p>Movies you nominate will appear here</p>;
+        let currNoms = <p style={{color: 'white'}}>Movies you nominate will appear here</p>;
         let enter = props.isMobileSized ? {opacity : 1} : {transform: 'translate3d(0, 0%, 0)' , opacity: 1}
         let leave = props.isMobileSized ? {opacity : 0} : {transform: 'translate3d(0, 100%, 0)' , opacity: 0}
         
@@ -59,6 +60,8 @@ const Nominations = (props) => {
                 style={props}
                 className={classes.Nominations}>
                     <div style={{flexGrow: 1, flexBasis: "80%"}}>
+                         <h2 style={{color: 'white'}}>Current Nominations</h2>
+                                <Divider variant="middle" style={{backgroundColor: 'white', marginBottom:'30px'}}/>
                         {currNoms}
                     </div>
                 </animated.div>)}

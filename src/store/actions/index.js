@@ -1,2 +1,2 @@
 export {searchMovies} from './searchActions'; 
-export {nominateMovie, deleteNomination, hideBanner} from './nominateActions'
+export {nominateMovie, deleteNomination, hideSuccessBanner, hideLimitBanner} from './nominateActions'
