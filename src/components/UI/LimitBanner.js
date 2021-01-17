@@ -17,7 +17,7 @@ class LimitBanner extends Component{
                 autoHideDuration={10000}
                 onClose={this.props.onLimitHide}
             >
-                <Alert  onClose={this.props.onLimitHide} variant="filled" color="error">
+                <Alert  onClose={this.props.onLimitHide} variant="filled" severity="error">
                     <AlertTitle>Nomination Limit Reached</AlertTitle>
                         Remove an existing nomination to add more
                 </Alert>
