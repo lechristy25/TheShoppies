@@ -26,7 +26,7 @@ export const searchMovies = (event) => {
         dispatch (setQuery(formattedQuery))
         let initialSearch = []; 
         let results = [];
-        axios.get('http://www.omdbapi.com/?apikey=95cdb87b&s=' + formattedQuery)
+        axios.get('https://www.omdbapi.com/?apikey=95cdb87b&s=' + formattedQuery)
             .then(response => {
                 // console.log(response)
                 if(response.data.Search){
@@ -35,7 +35,7 @@ export const searchMovies = (event) => {
                     )).slice(0, 5)
                     
                 }
-                const array = axios.all(initialSearch.map(movie => axios.get('http://www.omdbapi.com/?apikey=95cdb87b&i=' + movie.imdbID + '&plot=short')))
+                const array = axios.all(initialSearch.map(movie => axios.get('https://www.omdbapi.com/?apikey=95cdb87b&i=' + movie.imdbID + '&plot=short')))
                 array.then(response => {
                     if(response.length > 0){
                         response.forEach(movie => results.push(movie.data))
